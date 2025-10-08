@@ -15,12 +15,10 @@ jobs:
 
       - name: Définir la date
         id: date
-        run: echo "Maël Vauthier \nDate = $(date +'%Y%m%d-%H%M%S')" > Q2_archive_TOTO.txt
-        run: cp TOTO.txt Q2_
-    
-      - name: Copie du fichier TOTO dans archive_TOTO
-        run: | 
-          cp TOTO.txt Q1_archive_TOTO.txt 
+        run: |
+          echo "Maël Vauthier \nDate = $(date +'%Y%m%d-%H%M%S')" > Q2_archive_TOTO.txt
+          cp TOTO.txt Q2_archive_TOTO.txt
+          ls -lh
 
       - name: Configurer Git
         run: |
