@@ -16,6 +16,11 @@ jobs:
       - name: Copie du fichier TOTO dans archive_TOTO
         run: | 
           cp TOTO.txt Q1_archive_TOTO.txt 
+
+      - name: Configurer Git
+        run: |
+          git config --global user.name "maelvdev"
+          git config --global user.email "mael.vauthier@etu.univ-lehavre.fr"
           
       - name: Commit et push
         run: |
