@@ -1,8 +1,4 @@
 Maël Vauthier
-Date = 2025/10/08-14 H
+Date = 2025/10/08 14H
 Vu que le premier est bon je vérifie le 2
-total 16
-4 Q1_archive_TOTO.txt
-4 Q2_archive_TOTO.txt
-4 README.md
 4 TOTO.txt
