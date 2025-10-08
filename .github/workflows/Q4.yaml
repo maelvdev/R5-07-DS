@@ -1,0 +1,38 @@
+name: Question 4 DS
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  create-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Définir la date
+        id: date
+        run: |
+          echo "date=$(date +'%d%m%Y')" >> $GITHUB_OUTPUT
+          echo "Pas d’archive précédente pour comparaison." >> Q4_archive_${{ steps.date.outputs.date }}.txt
+    
+      - name: Copie du fichier Q4.java dans Q4_archive_TOTO
+        run: | 
+          echo "Maël Vauthier" > Q4_archive_${{ steps.date.outputs.date }}.txt
+          cat Q4.java >> Q4_archive_${{ steps.date.outputs.date }}.txt
+
+      - name: Configurer Git
+        run: |
+          git config --global user.name "maelvdev"
+          git config --global user.email "mael.vauthier@etu.univ-lehavre.fr"
+          
+      - name: Commit et push
+        run: |
+          git add Q4_archive_${{ steps.date.outputs.date }}.txt
+          git commit -m "Ajout de Q4_archive_${{ steps.date.outputs.date }}.txt" || echo "Aucun changement à valider"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
