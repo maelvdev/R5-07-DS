@@ -1,9 +1,6 @@
-name: Push rapport.txt et archive des fichiers java
+name: Question 2 DS
 
-on:
-  push:
-    branches:
-      - main  # ou master, selon ton dépôt
+on: [push]
 
 permissions:
   contents: write
@@ -16,23 +13,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Crée le fichier rapport.txt
-        run: |
-           echo "rapport généré automatiquement le $(date)" > rapport.txt
+      - name: Définir la date
+        id: date
+        run: echo "Maël Vauthier \nDate = $(date +'%Y%m%d-%H%M%S')" > Q2_archive_TOTO.txt
+        run: cp TOTO.txt Q2_
+    
+      - name: Copie du fichier TOTO dans archive_TOTO
+        run: | 
+          cp TOTO.txt Q1_archive_TOTO.txt 
 
-      - name: Crée le dossier archive.zip
+      - name: Configurer Git
         run: |
-          zip archive.zip *.java
-
-      - name: Configure Git
-        run: |
-          git config --global user.name "maelV"
+          git config --global user.name "maelvdev"
           git config --global user.email "mael.vauthier@etu.univ-lehavre.fr"
-
+          
       - name: Commit et push
         run: |
-          git add rapport.txt archive.zip
-          git commit -m "Ajout de rapport.txt et archive.zip"
+          git add Q1_archive_TOTO.txt
+          git commit -m "Ajout de Q1_archive_TOTO.txt"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
