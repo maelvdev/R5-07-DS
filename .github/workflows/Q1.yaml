@@ -1,0 +1,23 @@
+name: Question 1 DS
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  archive-and-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copie du ficheir TOTO dans archive_TOTO
+        run: |
+          copy TOTO.txt Q1_archive_TOTO.txt 
+          
+      - name: Commit et push
+        run: |
+          git add Q1_archive_TOTO.txt
+          git commit -m "Ajout de Q1_archive_TOTO.txt"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
