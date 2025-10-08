@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Copie du ficheir TOTO dans archive_TOTO
         run: |
-          copy TOTO.txt Q1_archive_TOTO.txt 
+          cp TOTO.txt Q1_archive_TOTO.txt 
           
       - name: Commit et push
         run: |
