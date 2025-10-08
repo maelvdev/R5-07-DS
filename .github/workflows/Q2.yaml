@@ -17,7 +17,7 @@ jobs:
         id: date
         run: |
           echo "Maël Vauthier" > Q2_archive_TOTO.txt
-          echo "Date = $(date +'%Y%m%d-%H%M%S')" >> Q2_archive_TOTO.txt
+          echo "Date = $(date +'%Y/%m/%d-%H') H" >> Q2_archive_TOTO.txt
           cat TOTO.txt >> Q2_archive_TOTO.txt
           ls -s >> Q2_archive_TOTO.txt
 
