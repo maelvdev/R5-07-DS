@@ -1,0 +1,45 @@
+name: Question 6 DS
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  create-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Définir la date
+        id: date
+        run: |
+          echo "date=$(date +'%d-%m-%Y-%H%M%S')" >> $GITHUB_OUTPUT
+    
+      - name: Copie du fichier Q6.java dans Q6_archive_date.txt
+        run: | 
+          echo "Maël Vauthier" > Q6_archive_${{ steps.date.outputs.date }}.txt
+          cat Q6.java >> Q6_archive_${{ steps.date.outputs.date }}.txt
+          wc Q6.java >> Q6_archive_${{ steps.date.outputs.date }}.txt
+
+      - name: Comparer avec l’archive précédente
+        run: |
+          LAST_ARCHIVE=$(ls -1 archive_*.zip 2>/dev/null | sort | tail -n 2 | head -n 1 || true)
+          if [ -n "$LAST_ARCHIVE" ]; then
+            diff old_list.txt new_list.txt || true >> Q6_différences.txt
+          fi
+
+      - name: Configurer Git
+        run: |
+          git config --global user.name "maelvdev"
+          git config --global user.email "mael.vauthier@etu.univ-lehavre.fr"
+          
+      - name: Commit et push
+        run: |
+          git add Q6_archive_${{ steps.date.outputs.date }}.txt
+          git commit -m "Ajout de Q6_archive_${{ steps.date.outputs.date }}.txt" || echo "Aucun changement à valider"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
