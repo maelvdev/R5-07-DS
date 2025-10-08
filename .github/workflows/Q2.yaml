@@ -17,8 +17,8 @@ jobs:
         id: date
         run: |
           echo "Maël Vauthier \nDate = $(date +'%Y%m%d-%H%M%S')" > Q2_archive_TOTO.txt
-          cp TOTO.txt Q2_archive_TOTO.txt
-          ls -lh
+          cat TOTO.txt >> Q2_archive_TOTO.txt
+          ls -lh >> Q2_archive_TOTO.txt
 
       - name: Configurer Git
         run: |
