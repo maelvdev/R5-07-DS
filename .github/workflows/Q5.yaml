@@ -16,13 +16,13 @@ jobs:
       - name: Définir la date
         id: date
         run: |
-          echo "date=$(date +'%d%m%Y')" >> $GITHUB_OUTPUT
-          echo "Pas d’archive précédente pour comparaison." >> Q4_archive_${{ steps.date.outputs.date }}.txt
+          echo "date=$(date +'%d-%m-%Y-%H%M%S')" >> $GITHUB_OUTPUT
+          echo "Pas d’archive précédente pour comparaison." >> Q5_archive_${{ steps.date.outputs.date }}.txt
     
       - name: Copie du fichier Q4.java dans Q4_archive_TOTO
         run: | 
-          echo "Maël Vauthier" > Q4_archive_${{ steps.date.outputs.date }}.txt
-          cat Q4.java >> Q4_archive_${{ steps.date.outputs.date }}.txt
+          echo "Maël Vauthier" > Q5_archive_${{ steps.date.outputs.date }}.txt
+          cat Q4.java >> Q5_archive_${{ steps.date.outputs.date }}.txt
 
       - name: Configurer Git
         run: |
@@ -31,8 +31,8 @@ jobs:
           
       - name: Commit et push
         run: |
-          git add Q4_archive_${{ steps.date.outputs.date }}.txt
-          git commit -m "Ajout de Q4_archive_${{ steps.date.outputs.date }}.txt" || echo "Aucun changement à valider"
+          git add Q5_archive_${{ steps.date.outputs.date }}.txt
+          git commit -m "Ajout de Q5_archive_${{ steps.date.outputs.date }}.txt" || echo "Aucun changement à valider"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
