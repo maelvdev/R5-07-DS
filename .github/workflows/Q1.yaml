@@ -6,12 +6,15 @@ permissions:
   contents: write
 
 jobs:
-  archive-and-report:
+  copy-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Copie du ficheir TOTO dans archive_TOTO
-        run: |
+      - name: Checkout repository
+        uses: actions/checkout@v3
+    
+      - name: Copie du fichier TOTO dans archive_TOTO
+        run: | 
           cp TOTO.txt Q1_archive_TOTO.txt 
           
       - name: Commit et push
