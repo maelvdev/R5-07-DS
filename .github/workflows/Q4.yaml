@@ -16,7 +16,7 @@ jobs:
       - name: Définir la date
         id: date
         run: |
-          echo "date=$(date +'%d%m%Y')" >> $GITHUB_OUTPUT
+          echo "date=$(date +'%d-%m-%Y')" >> $GITHUB_OUTPUT
           echo "Pas d’archive précédente pour comparaison." >> Q4_archive_${{ steps.date.outputs.date }}.txt
     
       - name: Copie du fichier Q4.java dans Q4_archive_TOTO
