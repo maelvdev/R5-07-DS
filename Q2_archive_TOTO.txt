@@ -1,5 +1,5 @@
 Maël Vauthier
-Date = 20251008-140406
+Date = 2025/10/08-14 H
 Vu que le premier est bon je vérifie le 2
 total 16
 4 Q1_archive_TOTO.txt
