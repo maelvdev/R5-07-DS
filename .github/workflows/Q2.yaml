@@ -1,0 +1,38 @@
+name: Push rapport.txt et archive des fichiers java
+
+on:
+  push:
+    branches:
+      - main  # ou master, selon ton dépôt
+
+permissions:
+  contents: write
+
+jobs:
+  create-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Crée le fichier rapport.txt
+        run: |
+           echo "rapport généré automatiquement le $(date)" > rapport.txt
+
+      - name: Crée le dossier archive.zip
+        run: |
+          zip archive.zip *.java
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "maelV"
+          git config --global user.email "mael.vauthier@etu.univ-lehavre.fr"
+
+      - name: Commit et push
+        run: |
+          git add rapport.txt archive.zip
+          git commit -m "Ajout de rapport.txt et archive.zip"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
