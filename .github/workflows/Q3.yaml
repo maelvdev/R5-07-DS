@@ -1,0 +1,28 @@
+name: Question 1 DS
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  copy-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+    
+      - name: Copie du fichier TOTO dans archive_TOTO
+        run: | 
+          cp TOTO.txt Q1_archive_TOTO.txt 
+          
+      - name: Commit et push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Q1_archive_TOTO.txt
+          git commit -m "Ajout de Q1_archive_TOTO.txt" || echo "Aucun changement à valider"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
