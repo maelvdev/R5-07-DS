@@ -1,3 +1,9 @@
+Maël Vauthier \nDate = 20251008-140103
 Premier test
 copy --> cp
 Ajout name run
+total 16K
+-rw-r--r-- 1 runner runner 40 Oct  8 14:01 Q1_archive_TOTO.txt
+-rw-r--r-- 1 runner runner 80 Oct  8 14:01 Q2_archive_TOTO.txt
+-rw-r--r-- 1 runner runner 10 Oct  8 14:01 README.md
+-rw-r--r-- 1 runner runner 40 Oct  8 14:01 TOTO.txt
