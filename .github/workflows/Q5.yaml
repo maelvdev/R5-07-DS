@@ -1,4 +1,4 @@
-name: Question 4 DS
+name: Question 5 DS
 
 on: [push]
 
@@ -19,10 +19,10 @@ jobs:
           echo "date=$(date +'%d-%m-%Y-%H%M%S')" >> $GITHUB_OUTPUT
           echo "Pas d’archive précédente pour comparaison." >> Q5_archive_${{ steps.date.outputs.date }}.txt
     
-      - name: Copie du fichier Q4.java dans Q4_archive_TOTO
+      - name: Copie du fichier Q5.java dans Q5_archive_date.txt
         run: | 
           echo "Maël Vauthier" > Q5_archive_${{ steps.date.outputs.date }}.txt
-          cat Q4.java >> Q5_archive_${{ steps.date.outputs.date }}.txt
+          cat Q5.java >> Q5_archive_${{ steps.date.outputs.date }}.txt
 
       - name: Configurer Git
         run: |
