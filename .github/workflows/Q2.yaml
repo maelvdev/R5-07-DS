@@ -27,8 +27,8 @@ jobs:
           
       - name: Commit et push
         run: |
-          git add Q1_archive_TOTO.txt
-          git commit -m "Ajout de Q1_archive_TOTO.txt"
+          git add Q2_archive_TOTO.txt
+          git commit -m "Ajout de Q2_archive_TOTO.txt"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
